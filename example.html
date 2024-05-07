@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="x-image.js"></script>
+        <style>
+            body {
+                margin: 2em 300px;
+            }
+
+            @media (prefers-color-scheme: dark) {
+
+                body {
+                    background-color: black;
+                    color: white;
+                }
+
+            }
+
+            x-image {
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1><code>x-image</code></h1>
+
+        <x-image width="450" height="450">
+            <x-source width="150" height="150" src="images/300.png"></x-source>
+            <x-source width="300" height="300" src="images/600.png"></x-source>
+            <x-source width="450" height="450" src="images/900.png"></x-source>
+        </x-image>
+
+    </body>
+</html>
