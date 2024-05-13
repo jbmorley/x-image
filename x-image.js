@@ -2,6 +2,8 @@ class XImage extends HTMLElement {
 
     connectedCallback() {
 
+        console.log("Connected!");
+
         if (!this.isConnected) {
             return;
         }
@@ -32,21 +34,21 @@ class XImage extends HTMLElement {
         this.resizeObserver.observe(this);
 
         this.sources = [];
+
+        this.add(this.children);
     }
 
-    onMutation(mutations) {
+    add(nodes) {
         var needsUpdate = false;
 
-        for (const mutation of mutations) {
-            for (const node of mutation.addedNodes) {
-                if (node.tagName == "X-SOURCE") {
-                    this.sources.push({
-                        src: node.getAttribute("src"),
-                        width: Number(node.getAttribute("width")),
-                        height: Number(node.getAttribute("height")),
-                    });
-                    needsUpdate = true;
-                }
+        for (const node of nodes) {
+            if (node.tagName == "X-SOURCE") {
+                this.sources.push({
+                    src: node.getAttribute("src"),
+                    width: Number(node.getAttribute("width")),
+                    height: Number(node.getAttribute("height")),
+                });
+                needsUpdate = true;
             }
         }
 
@@ -59,6 +61,12 @@ class XImage extends HTMLElement {
 
             // Select the appropriate size.
             this.selectSource();
+        }
+    }
+
+    onMutation(mutations) {
+        for (const mutation of mutations) {
+            this.add(mutation.addedNodes);
         }
     }
 
