@@ -5,11 +5,16 @@
         <style>
             body {
                 margin: 2em 300px;
+                background-color: #999;
+            }
+
+            .container {
+                background-color: white;
             }
 
             @media (prefers-color-scheme: dark) {
 
-                body {
+                .container {
                     background-color: black;
                     color: white;
                 }
@@ -23,14 +28,19 @@
         </style>
     </head>
     <body>
+        <div class="container">
 
-        <h1><code>x-image</code></h1>
+            <h1><code>x-image</code></h1>
 
-        <x-image width="450" height="450">
-            <x-source width="150" height="150" src="images/300.png"></x-source>
-            <x-source width="300" height="300" src="images/600.png"></x-source>
-            <x-source width="450" height="450" src="images/900.png"></x-source>
-        </x-image>
+            <x-image width="450" height="450">
+                <x-source width="150" height="150" src="images/300.png"></x-source>
+                <x-source width="300" height="300" src="images/600.png"></x-source>
+                <x-source width="450" height="450" src="images/900.png"></x-source>
+            </x-image>
+
+            <img src="images/300.png" width="300" height="300" x-srcset="images/300.png 150 150, images/600.png 300 300, images/900.png 900 900" />
+
+        </div>
 
     </body>
 </html>
