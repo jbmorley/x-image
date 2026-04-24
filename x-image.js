@@ -184,8 +184,8 @@ const observer = new MutationObserver(mutations => {
     });
 });
 
-// Start observing the document for changes
+// Start observing the document for changes.
 observer.observe(document, {
-    childList: true,  // Observe direct child additions/removals
-    subtree: true     // Observe changes in all descendants
+    childList: true,
+    subtree: true
 });
