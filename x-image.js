@@ -151,7 +151,7 @@ function promoteImg(img) {
     const xImage = document.createElement('x-image');
     xImage.setAttribute("width", img.width);
     xImage.setAttribute("height", img.height);
-    img.replaceWith(xImage);  // TODO: Work out how to push this later?
+    img.replaceWith(xImage);
     xImage.add(sources.map((source) => {
         const element = document.createElement('x-source');
         element.setAttribute("src", source.src);
