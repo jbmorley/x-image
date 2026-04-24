@@ -1,6 +1,12 @@
 class XImage extends HTMLElement {
 
-    // TODO: Initialize before connected so it can be created dynamically.
+    constructor() {
+        super();
+        this.element = null;
+        this.selection = null;
+        this.sources = [];
+    }
+
     connectedCallback() {
 
         if (!this.isConnected) {
@@ -74,8 +80,15 @@ class XImage extends HTMLElement {
     }
 
     selectSource() {
-        const scale = window.devicePixelRatio;
+
+        // Check to see if our bounds are non-zero. If they are, we return early and trust
+        // that we'll get calld again.
         const bounds = this.getBoundingClientRect();
+        if (bounds.width === 0) {
+            return;
+        }
+
+        const scale = window.devicePixelRatio;
         const targetWidth = bounds.width * scale;
         const targetHeight = targetWidth / this.aspectRatio;
 
